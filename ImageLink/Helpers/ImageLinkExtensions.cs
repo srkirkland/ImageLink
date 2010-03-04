@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -9,42 +10,42 @@ namespace ImageLink.Helpers
     {
         public const string STR_NULL_OR_EMPTY = "Value cannot be null or empty.";
 
-        public static string ActionLink(this HtmlHelper htmlHelper, string linkText, string actionName)
+        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName)
         {
-            return ActionLink(htmlHelper, linkText, actionName, null /* controllerName */, new RouteValueDictionary(), new RouteValueDictionary());
+            return ImageLink(htmlHelper, linkText, actionName, null /* controllerName */, new RouteValueDictionary(), new RouteValueDictionary());
         }
 
-        public static string ActionLink(this HtmlHelper htmlHelper, string linkText, string actionName, object routeValues)
+        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, object routeValues)
         {
-            return ActionLink(htmlHelper, linkText, actionName, null /* controllerName */, new RouteValueDictionary(routeValues), new RouteValueDictionary());
+            return ImageLink(htmlHelper, linkText, actionName, null /* controllerName */, new RouteValueDictionary(routeValues), new RouteValueDictionary());
         }
 
-        public static string ActionLink(this HtmlHelper htmlHelper, string linkText, string actionName, object routeValues, object htmlAttributes)
+        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, object routeValues, object htmlAttributes)
         {
-            return ActionLink(htmlHelper, linkText, actionName, null /* controllerName */, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes));
+            return ImageLink(htmlHelper, linkText, actionName, null /* controllerName */, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes));
         }
 
-        public static string ActionLink(this HtmlHelper htmlHelper, string linkText, string actionName, RouteValueDictionary routeValues)
+        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, RouteValueDictionary routeValues)
         {
-            return ActionLink(htmlHelper, linkText, actionName, null /* controllerName */, routeValues, new RouteValueDictionary());
+            return ImageLink(htmlHelper, linkText, actionName, null /* controllerName */, routeValues, new RouteValueDictionary());
         }
 
-        public static string ActionLink(this HtmlHelper htmlHelper, string linkText, string actionName, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes)
+        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes)
         {
-            return ActionLink(htmlHelper, linkText, actionName, null /* controllerName */, routeValues, htmlAttributes);
+            return ImageLink(htmlHelper, linkText, actionName, null /* controllerName */, routeValues, htmlAttributes);
         }
 
-        public static string ActionLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName)
+        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName)
         {
-            return ActionLink(htmlHelper, linkText, actionName, controllerName, new RouteValueDictionary(), new RouteValueDictionary());
+            return ImageLink(htmlHelper, linkText, actionName, controllerName, new RouteValueDictionary(), new RouteValueDictionary());
         }
 
-        public static string ActionLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, object routeValues, object htmlAttributes)
+        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, object routeValues, object htmlAttributes)
         {
-            return ActionLink(htmlHelper, linkText, actionName, controllerName, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes));
+            return ImageLink(htmlHelper, linkText, actionName, controllerName, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes));
         }
 
-        public static string ActionLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes)
+        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes)
         {
             if (String.IsNullOrEmpty(linkText))
             {
@@ -53,77 +54,49 @@ namespace ImageLink.Helpers
             return HtmlHelper.GenerateLink(htmlHelper.ViewContext.RequestContext, htmlHelper.RouteCollection, linkText, null/* routeName */, actionName, controllerName, routeValues, htmlAttributes);
         }
 
-        public static string ActionLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, string protocol, string hostName, string fragment, object routeValues, object htmlAttributes)
+        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, string protocol, string hostName, string fragment, object routeValues, object htmlAttributes)
         {
-            return ActionLink(htmlHelper, linkText, actionName, controllerName, protocol, hostName, fragment, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes));
+            return ImageLink(htmlHelper, linkText, actionName, controllerName, protocol, hostName, fragment, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes));
         }
 
-        public static string ActionLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, string protocol, string hostName, string fragment, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes)
+        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, string protocol, string hostName, string fragment, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes)
         {
             if (String.IsNullOrEmpty(linkText))
             {
                 throw new ArgumentException(STR_NULL_OR_EMPTY, "linkText");
             }
+
             return HtmlHelper.GenerateLink(htmlHelper.ViewContext.RequestContext, htmlHelper.RouteCollection, linkText, null /* routeName */, actionName, controllerName, protocol, hostName, fragment, routeValues, htmlAttributes);
         }
 
-        public static string RouteLink(this HtmlHelper htmlHelper, string linkText, object routeValues)
+        public static string GenerateImageLink(RequestContext requestContext, RouteCollection routeCollection, string linkText, string routeName, string actionName, string controllerName, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes, string imageUrl, IDictionary<string, object> imageHtmlAttributes)
         {
-            return RouteLink(htmlHelper, linkText, new RouteValueDictionary(routeValues));
+            return GenerateImageLink(requestContext, routeCollection, linkText, routeName, actionName, controllerName, null/* protocol */, null/* hostName */, null/* fragment */, routeValues, htmlAttributes, imageUrl, imageHtmlAttributes);
         }
 
-        public static string RouteLink(this HtmlHelper htmlHelper, string linkText, RouteValueDictionary routeValues)
+        public static string GenerateImageLink(RequestContext requestContext, RouteCollection routeCollection, string linkText, string routeName, string actionName, string controllerName, string protocol, string hostName, string fragment, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes, string imageUrl, IDictionary<string, object> imageHtmlAttributes)
         {
-            return RouteLink(htmlHelper, linkText, routeValues, new RouteValueDictionary());
+            return GenerateImageLinkInternal(requestContext, routeCollection, linkText, routeName, actionName, controllerName, protocol, hostName, fragment, routeValues, htmlAttributes, imageUrl, imageHtmlAttributes, true /* includeImplicitMvcValues */);
         }
 
-        public static string RouteLink(this HtmlHelper htmlHelper, string linkText, string routeName, object routeValues)
+        private static string GenerateImageLinkInternal(RequestContext requestContext, RouteCollection routeCollection, string linkText, string routeName, string actionName, string controllerName, string protocol, string hostName, string fragment, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes, string imageUrl, IDictionary<string, object> imageHtmlAttributes, bool includeImplicitMvcValues)
         {
-            return RouteLink(htmlHelper, linkText, routeName, new RouteValueDictionary(routeValues));
-        }
+            string url = UrlHelper.GenerateUrl(routeName, actionName, controllerName, protocol, hostName, fragment, routeValues, routeCollection, requestContext, includeImplicitMvcValues);
 
-        public static string RouteLink(this HtmlHelper htmlHelper, string linkText, string routeName, RouteValueDictionary routeValues)
-        {
-            return RouteLink(htmlHelper, linkText, routeName, routeValues, new RouteValueDictionary());
-        }
-
-        public static string RouteLink(this HtmlHelper htmlHelper, string linkText, object routeValues, object htmlAttributes)
-        {
-            return RouteLink(htmlHelper, linkText, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes));
-        }
-
-        public static string RouteLink(this HtmlHelper htmlHelper, string linkText, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes)
-        {
-            return RouteLink(htmlHelper, linkText, null /* routeName */, routeValues, htmlAttributes);
-        }
-
-        public static string RouteLink(this HtmlHelper htmlHelper, string linkText, string routeName, object routeValues, object htmlAttributes)
-        {
-            return RouteLink(htmlHelper, linkText, routeName, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes));
-        }
-
-        public static string RouteLink(this HtmlHelper htmlHelper, string linkText, string routeName, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes)
-        {
-            if (String.IsNullOrEmpty(linkText))
+            TagBuilder imageTagBuilder = new TagBuilder("img");
+            imageTagBuilder.MergeAttribute("src", imageUrl); //TODO: Fix!
+            imageTagBuilder.MergeAttribute("alt", linkText);
+            imageTagBuilder.MergeAttributes(imageHtmlAttributes);
+            
+            TagBuilder tagBuilder = new TagBuilder("a")
             {
-                throw new ArgumentException(STR_NULL_OR_EMPTY, "linkText");
-            }
-            return HtmlHelper.GenerateRouteLink(htmlHelper.ViewContext.RequestContext, htmlHelper.RouteCollection, linkText, routeName, routeValues, htmlAttributes);
+                InnerHtml = imageTagBuilder.ToString(TagRenderMode.SelfClosing)
+            };
+            tagBuilder.MergeAttributes(htmlAttributes);
+            tagBuilder.MergeAttribute("href", url);
+            return tagBuilder.ToString(TagRenderMode.Normal);
         }
 
-        public static string RouteLink(this HtmlHelper htmlHelper, string linkText, string routeName, string protocol, string hostName, string fragment, object routeValues, object htmlAttributes)
-        {
-            return RouteLink(htmlHelper, linkText, routeName, protocol, hostName, fragment, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes));
-        }
-
-        public static string RouteLink(this HtmlHelper htmlHelper, string linkText, string routeName, string protocol, string hostName, string fragment, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes)
-        {
-            if (String.IsNullOrEmpty(linkText))
-            {
-                throw new ArgumentException(STR_NULL_OR_EMPTY, "linkText");
-            }
-            return HtmlHelper.GenerateRouteLink(htmlHelper.ViewContext.RequestContext, htmlHelper.RouteCollection, linkText, routeName, protocol, hostName, fragment, routeValues, htmlAttributes);
-        }
     }
 
 }
