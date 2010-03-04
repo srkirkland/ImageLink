@@ -10,39 +10,39 @@ namespace ImageLink.Helpers
     {
         public const string STR_NULL_OR_EMPTY = "Value cannot be null or empty.";
 
-        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName)
+        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, string imageUrl)
         {
-            return ImageLink(htmlHelper, linkText, actionName, null /* controllerName */, new RouteValueDictionary(), new RouteValueDictionary());
+            return ImageLink(htmlHelper, linkText, actionName, null /* controllerName */, new RouteValueDictionary(), new RouteValueDictionary(), imageUrl, new RouteValueDictionary());
         }
 
-        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, object routeValues)
+        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, object routeValues, string imageUrl)
         {
-            return ImageLink(htmlHelper, linkText, actionName, null /* controllerName */, new RouteValueDictionary(routeValues), new RouteValueDictionary());
+            return ImageLink(htmlHelper, linkText, actionName, null /* controllerName */, new RouteValueDictionary(routeValues), new RouteValueDictionary(), imageUrl, new RouteValueDictionary());
         }
 
-        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, object routeValues, object htmlAttributes)
+        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, object routeValues, object htmlAttributes, string imageUrl, object imageHtmlAttributes)
         {
-            return ImageLink(htmlHelper, linkText, actionName, null /* controllerName */, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes));
+            return ImageLink(htmlHelper, linkText, actionName, null /* controllerName */, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes), imageUrl, new RouteValueDictionary(imageHtmlAttributes));
         }
 
-        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, RouteValueDictionary routeValues)
+        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, RouteValueDictionary routeValues, string imageUrl)
         {
-            return ImageLink(htmlHelper, linkText, actionName, null /* controllerName */, routeValues, new RouteValueDictionary());
+            return ImageLink(htmlHelper, linkText, actionName, null /* controllerName */, routeValues, new RouteValueDictionary(), imageUrl, new RouteValueDictionary());
         }
 
-        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes)
+        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes, string imageUrl, IDictionary<string, object> imageHtmlAttributes)
         {
-            return ImageLink(htmlHelper, linkText, actionName, null /* controllerName */, routeValues, htmlAttributes);
+            return ImageLink(htmlHelper, linkText, actionName, null /* controllerName */, routeValues, htmlAttributes, imageUrl, imageHtmlAttributes);
         }
 
-        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName)
+        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, string imageUrl)
         {
-            return ImageLink(htmlHelper, linkText, actionName, controllerName, new RouteValueDictionary(), new RouteValueDictionary());
+            return ImageLink(htmlHelper, linkText, actionName, controllerName, new RouteValueDictionary(), new RouteValueDictionary(), imageUrl, new RouteValueDictionary());
         }
 
-        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, object routeValues, object htmlAttributes)
+        public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, object routeValues, object htmlAttributes, string imageUrl, object imageHtmlAttributes)
         {
-            return ImageLink(htmlHelper, linkText, actionName, controllerName, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes));
+            return ImageLink(htmlHelper, linkText, actionName, controllerName, new RouteValueDictionary(routeValues), new RouteValueDictionary(htmlAttributes), imageUrl, new RouteValueDictionary(imageHtmlAttributes));
         }
 
         public static string ImageLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, RouteValueDictionary routeValues, IDictionary<string, object> htmlAttributes, string imageUrl, IDictionary<string, object> imageHtmlAttributes)
