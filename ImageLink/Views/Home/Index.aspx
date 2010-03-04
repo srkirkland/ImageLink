@@ -19,5 +19,4 @@
         <%= Html.ImageLink("image.png", "alt text", "About", new {}, new {id = "about-link"}, new {id = "image-link"}) %>
     </p>
     
-    
 </asp:Content>

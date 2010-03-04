@@ -86,7 +86,7 @@ namespace ImageLink.Helpers
             string url = UrlHelper.GenerateUrl(routeName, actionName, controllerName, protocol, hostName, fragment, routeValues, routeCollection, requestContext, includeImplicitMvcValues);
 
             TagBuilder imageTagBuilder = new TagBuilder("img");
-            imageTagBuilder.MergeAttribute("src", ImageNameHelper.GenerateimageName(imageName, requestContext.HttpContext));
+            imageTagBuilder.MergeAttribute("src", ImageUrlHelper.GenerateImageUrl(imageName, requestContext.HttpContext));
             imageTagBuilder.MergeAttribute("alt", altText);
             imageTagBuilder.MergeAttributes(imagelinkHtmlAttributes);
             

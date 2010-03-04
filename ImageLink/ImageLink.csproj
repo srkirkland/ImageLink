@@ -67,7 +67,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ImageLinkExtensions.cs" />
-    <Compile Include="Helpers\ImageNameHelper.cs" />
+    <Compile Include="Helpers\ImageUrlHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
