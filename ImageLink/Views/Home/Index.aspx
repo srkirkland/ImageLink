@@ -11,6 +11,13 @@
         To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
     </p>
     
-    Plain Image Link: <%= Html.ImageLink("image.png", "alt", "About") %>
+    <p>
+        Plain Image Link: <%= Html.ImageLink("image.png", "alt text", "About") %>
+    </p>
+    <p>
+        Image Link with html attributes:
+        <%= Html.ImageLink("image.png", "alt text", "About", new {}, new {id = "about-link"}, new {id = "image-link"}) %>
+    </p>
+    
     
 </asp:Content>
