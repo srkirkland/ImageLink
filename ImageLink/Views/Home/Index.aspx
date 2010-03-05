@@ -12,11 +12,12 @@
     </p>
     
     <p>
-        Plain Image Link: <%= Html.ImageLink("image.png", "alt text", "About") %>
+        Plain Image Link: 
+        <%= Html.ImageLink("Link.png", "alt text", "About") %>
     </p>
     <p>
         Image Link with html attributes:
-        <%= Html.ImageLink("image.png", "alt text", "About", new {}, new {id = "about-link"}, new {id = "image-link"}) %>
+        <%= Html.ImageLink("Link.png", "alt text", "About", new {}, new {id = "about-link"}, new {id = "image-link"}) %>
     </p>
     
 </asp:Content>
